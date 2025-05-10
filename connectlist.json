@@ -8,14 +8,14 @@
             "ext2": "https://gist.githubusercontent.com/occupy-pluto/67cc3a53a26c631e32ed2f37e19e479d/raw/libvio.js"
         },
          { 
-            "name": "ギリギリ动漫", 
+            "name": "ギリギリ動漫", 
             "type": 3, 
             "api": "csp_ai",
             "ext": "https://raw.githubusercontent.com/fangkuia/XPTV/refs/heads/main/js/ai.js",
             "ext2": "https://gist.githubusercontent.com/occupy-pluto/5185fa59944d5b8af625b2c83604d397/raw/girl.js"
         },
         { 
-            "name": "AGE动漫", 
+            "name": "AGE動漫", 
             "type": 3, 
             "api": "csp_age",
             "ext": "https://raw.githubusercontent.com/fangkuia/XPTV/refs/heads/main/js/age.js",
@@ -58,7 +58,7 @@
             "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/anfuns.js"
         },
         {
-            "name": "影视天堂",
+            "name": "影視天堂",
             "type": 3,
             "api": "csp_ystt",
             "ext": "https://raw.githubusercontent.com/fangkuia/XPTV/refs/heads/main/js/ystt.js"
