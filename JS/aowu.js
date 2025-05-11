@@ -15,13 +15,13 @@ let appConfig = {
             },
         },
         {
-            name: '番剧',
+            name: '日本動漫',
             ext: {
                 type: 20,
             },
         },
         {
-            name: '剧场',
+            name: '動畫電影',
             ext: {
                 type: 33,
             },
