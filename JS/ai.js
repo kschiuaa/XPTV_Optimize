@@ -9,20 +9,20 @@ const headers = {
 
 const appConfig = {
   ver: 1,
-  title: "ギリギリ动漫",
+  title: "ギリギリ動畫",
   site: "https://anime.girigirilove.com",
   tabs: [{
-    name: '日番',
+    name: '日本動畫',
     ext: {
       url: 'https://anime.girigirilove.com/show/2--------{page}---/'
     },
   }, {
-    name: '美番',
+    name: '美國動畫',
     ext: {
       url: 'https://anime.girigirilove.com/show/3--------{page}---/'
     },
   }, {
-    name: '剧场版',
+    name: '動畫電影',
     ext: {
       url: 'https://anime.girigirilove.com/show/21--------{page}---/'
     },
