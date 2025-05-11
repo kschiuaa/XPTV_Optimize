@@ -11,33 +11,33 @@ const appConfig = {
   title: "LIBVIO",
   site: "https://www.libvio.cc",
   tabs: [{
-    name: '首页',
+    name: '首頁',
     ext: {
       url: '/',
       hasMore: false
     },
   }, {
-    name: '电影',
+    name: '電影',
     ext: {
       url: '/type/1-1.html'
     },
   }, {
-    name: '剧集',
+    name: '劇集',
     ext: {
       url: '/type/2-1.html',
     },
   }, {
-    name: '动漫',
+    name: '動漫',
     ext: {
       url: '/type/4-1.html',
     },
   }, {
-    name: '日韩剧',
+    name: '日韓劇',
     ext: {
       url: '/type/15-1.html'
     },
   }, {
-    name: '欧美剧',
+    name: '歐美劇',
     ext: {
       url: '/type/16-1.html'
     },
