@@ -3,7 +3,7 @@
         {
             "name": "電影天堂資源",
             "type": 1,
-            "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/"
+            "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/at/xml/"
         },
         {
             "name": "如意資源",
