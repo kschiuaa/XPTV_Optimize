@@ -4,81 +4,74 @@ const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_2_1 like Mac OS X) AppleWebKit
 
 let appConfig = {
     ver: 1,
-    title: '金牌影视',
+    title: '金牌影視',
     site: 'https://www.cfkj86.com',
     tabs: [
         {
-            name: '电影',
+            name: '電影',
             ext: {
                 id: 1,
             },
         },
-        {
-            name: '美剧',
-            ext: {
-                id: 2,
-                area: '美国',
-            },
-        },
-        {
-            name: '韩剧',
-            ext: {
-                id: 2,
-                area: '韩国',
-            },
-        },
-        {
-            name: '日剧',
-            ext: {
-                id: 2,
-                area: '日本',
-            },
-        },
-        {
-            name: '陆剧',
-            ext: {
-                id: 2,
-                area: '中国大陆',
-            },
-        },
-        {
-            name: '港剧',
-            ext: {
-                id: 2,
-                area: '中国香港',
-            },
-        },
-        {
-            name: '台剧',
-            ext: {
-                id: 2,
-                area: '中国台湾',
-            },
-        },
-        {
-            name: '泰剧',
-            ext: {
-                id: 2,
-                area: '泰国',
-            },
-        },
-        {
-            name: '其他',
+	{
+            name: '串流平台',
             ext: {
                 id: 2,
                 area: '其他',
             },
         },
         {
-            name: '综艺',
+            name: '動漫',
+            ext: {
+                id: 4,
+            },
+        },
+	{
+            name: '大陸劇',
+            ext: {
+                id: 2,
+                area: '中国大陆',
+            },
+        },
+	{
+            name: '綜藝',
             ext: {
                 id: 3,
             },
         },
-        {
-            name: '动漫',
+	{
+            name: '港劇',
             ext: {
-                id: 4,
+                id: 2,
+                area: '中国香港',
+            },
+        },
+        {
+            name: '美劇',
+            ext: {
+                id: 2,
+                area: '美国',
+            },
+        },
+        {
+            name: '韓劇',
+            ext: {
+                id: 2,
+                area: '韩国',
+            },
+        },
+        {
+            name: '日劇',
+            ext: {
+                id: 2,
+                area: '日本',
+            },
+        },
+        {
+            name: '台劇',
+            ext: {
+                id: 2,
+                area: '中国台湾',
             },
         },
     ],
