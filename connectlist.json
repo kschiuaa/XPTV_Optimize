@@ -73,7 +73,7 @@
         {
             "name": "量子資源",
             "type": 1,
-            "api": "https://lzizy.net/api.php/provide/vod/"
+            "api": "https://cj.lziapi.com/api.php/provide/vod/"
         },
         {
             "name": "嗷嗚動漫",
