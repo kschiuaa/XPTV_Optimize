@@ -10,19 +10,19 @@ let appConfig = {
     site: 'https://hdmoli.pro',
     tabs: [
         {
-            name: '电影',
+            name: '電影',
             ext: {
                 id: 1,
             },
         },
         {
-            name: '剧集',
+            name: '劇集',
             ext: {
                 id: 2,
             },
         },
         {
-            name: '动画',
+            name: '動畫',
             ext: {
                 id: 41,
             },
