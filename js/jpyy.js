@@ -4,7 +4,7 @@ const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_2_1 like Mac OS X) AppleWebKit
 
 let appConfig = {
     ver: 1,
-    title: '金牌影視',
+    title: '金牌影院',
     site: 'https://www.cfkj86.com',
     tabs: [
         {
