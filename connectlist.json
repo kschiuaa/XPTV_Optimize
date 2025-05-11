@@ -82,34 +82,19 @@
             "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/xiaohys.js"
         },
         {
-            "name": "Jable",
-            "type": 3,
-            "api": "csp_jable",
-            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/jable.js"
+            "name": "電影天堂資源",
+            "type": 1,
+            "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/"
         },
         {
-            "name": "AvDB",
-            "type": 3,
-            "api": "csp_avdb",
-            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/avdb.js"
+            "name": "如意資源",
+            "type": 1,
+            "api": "https://cj.rycjapi.com/api.php/provide/vod/"
         },
         {
-            "name": "HoHoJ",
-            "type": 3,
-            "api": "csp_hohoj",
-            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/hohoj.js"
-        },
-        {
-            "name": "AVtoday",
-            "type": 3,
-            "api": "csp_avtoday",
-            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/avtoday.js"
-        },
-        {
-            "name": "麻豆社",
-            "type": 3,
-            "api": "csp_madou",
-            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/madou.js"
+            "name": "天涯資源",
+            "type": 1,
+            "api": "https://tyyszy.com/api.php/provide/vod/"
         }
     ]
 }
