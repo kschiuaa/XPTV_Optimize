@@ -71,6 +71,11 @@
             "api": "https://tyyszy.com/api.php/provide/vod/"
         },
         {
+            "name": "量子資源"
+            "type": 1,
+            "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/at/xml/"
+        },
+        {
             "name": "嗷嗚動漫",
             "type": 3,
             "api": "csp_aowu",
