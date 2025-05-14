@@ -91,6 +91,12 @@
             "ext": "https://raw.githubusercontent.com/kschiuaa/XPTV_Optimize/refs/heads/main/JS/ai.js",
             "ext2": "https://raw.githubusercontent.com/fangkuia/XPTV/refs/heads/main/js/ai.js",
             "ext3": "https://gist.githubusercontent.com/occupy-pluto/5185fa59944d5b8af625b2c83604d397/raw/girl.js"
+        },
+        { 
+            "name": "南風短劇", 
+            "type": 3, 
+            "api": "csp_nanfdj",
+            "ext": "https://raw.githubusercontent.com/Yswag/xptv-extensions/main/js/nanfdj.js"
         }
     ]
 }
