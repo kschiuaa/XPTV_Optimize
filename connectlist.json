@@ -106,7 +106,7 @@
         },
         { 
             "name": "旺旺短劇資源", 
-            "type": 3, 
+            "type": 1, 
             "api": "csp_ai",
             "ext": "https://api.wwzy.tv/api.php/provide/vod/"
         }
