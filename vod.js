@@ -1,26 +1,27 @@
 // ==UserScript==
-// @name         Forward VOD Widget (Optimized)
+// @name         VOD影片數據助手 (繁體中文優化版)
 // @namespace    http://tampermonkey.net/
-// @version      1.2
-// @description  Enhanced VOD widget with traditional Chinese conversion
-// @author       Original: bemarkt, Enhanced: Ti
+// @version      1.4
+// @description  獲取VOD影視數據並優化繁體中文顯示
+// @author       Ti
 // @match        *://*/*
 // @grant        none
 // @require      https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.min.js
+// @run-at       document-start
 // ==/UserScript==
 
 var WidgetMetadata = {
   id: "ti.bemarkt.vod.maccms",
-  title: "VOD2",
-  description: "VOD",
-  author: "Ti",
+  title: "VOD影視助手",
+  description: "獲取VOD影視數據並優化繁體中文顯示",
+  author: "Ethan",
   site: "https://github.com/bemarkt/scripts/tree/master/provider/Forward",
-  version: "1.1.0",
+  version: "1.0.0",
   requiredVersion: "0.0.1",
   modules: [
     {
       title: "獲取影片列表",
-      description: "根據API地址、分類、頁碼等參數獲取影片列表。",
+      description: "根據API地址、分類、頁碼等參數獲取影片列表",
       requiresWebView: false,
       functionName: "getVodList",
       params: [
@@ -28,94 +29,28 @@ var WidgetMetadata = {
           name: "apiUrl",
           title: "影片源地址",
           type: "input",
-          description:
-            "當前僅支持蘋果CMS的JSON API地址 (例如: https://example.com/api.php/provide/vod/)",
+          description: "請輸入蘋果CMS的JSON API地址 (範例: https://example.com/api.php/provide/vod/)",
           value: "https://api.wwzy.tv/api.php/provide/vod/",
           placeholders: [
-            {
-              title: "極速資源",
-              value: "https://jszyapi.com/api.php/provide/vod/",
-            },
-            {
-              title: "木耳資源",
-              value: "https://json02.heimuer.xyz/api.php/provide/vod/",
-            },
-            {
-              title: "蝦米資源",
-              value: "https://gctf.tfdh.top/api.php/provide/vod/",
-            },
-            {
-              title: "魔抓資源",
-              value: "https://mozhuazy.com/api.php/provide/vod/",
-            },
-            {
-              title: "無盡資源",
-              value: "https://api.wujinapi.me/api.php/provide/vod/",
-            },
-            {
-              title: "金鷹資源",
-              value: "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json",
-            },
-            {
-              title: "旺旺短劇",
-              value: "https://api.wwzy.tv/api.php/provide/vod/",
-            },
-            {
-              title: "量子資源",
-              value: "https://cj.lziapi.com/api.php/provide/vod/at/json/",
-            },
-            {
-              title: "貓咪資源",
-              value: "http://zy.xiaomaomi.cc/api.php/provide/vod/",
-            },
-            {
-              title: "臥龍資源",
-              value: "https://collect.wolongzy.cc/api.php/provide/vod/",
-            },
-            {
-              title: "無憂資源",
-              value: "https://www.wyvod.com/api.php/provide/vod/",
-            },
-            {
-              title: "如意資源",
-              value: "https://cj.rycjapi.com/api.php/provide/vod/at/json/",
-            },
-            {
-              title: "九零資源",
-              value: "https://oknnews.com/api.php/provide/vod/",
-            },
-            {
-              title: "含羞資源",
-              value: "https://api.souavzy.vip/api.php/provide/vod/",
-            },
-            {
-              title: "玉兔資源",
-              value: "https://apiyutu.com/api.php/provide/vod/",
-            },
-            {
-              title: "魔抓資源",
-              value: "https://mozhuazy.com/api.php/provide/vod/",
-            },
-            {
-              title: "豆瓣資源",
-              value: "https://caiji.dbzy.tv/api.php/provide/vod/at/josn/",
-            },
-            {
-              title: "搜诶微",
-              value: "https://api.souavzy.vip/api.php/provide/vod/",
-            },
-            {
-              title: "阿里資源",
-              value: "https://alivod.com/api.php/provide/vod/",
-            },
-            {
-              title: "LSP",
-              value: "https://apilsbzy1.com/api.php/provide/vod",
-            },
-            {
-              title: "先鋒資源",
-              value: "http://60.204.225.89:1122/api.php/provide/vod/",
-            },
+            { title: "極速資源", value: "https://jszyapi.com/api.php/provide/vod/" },
+            { title: "木耳資源", value: "https://json02.heimuer.xyz/api.php/provide/vod/" },
+            { title: "蝦米資源", value: "https://gctf.tfdh.top/api.php/provide/vod/" },
+            { title: "魔抓資源", value: "https://mozhuazy.com/api.php/provide/vod/" },
+            { title: "無盡資源", value: "https://api.wujinapi.me/api.php/provide/vod/" },
+            { title: "金鷹資源", value: "https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/json" },
+            { title: "旺旺短劇", value: "https://api.wwzy.tv/api.php/provide/vod/" },
+            { title: "量子資源", value: "https://cj.lziapi.com/api.php/provide/vod/at/json/" },
+            { title: "貓咪資源", value: "http://zy.xiaomaomi.cc/api.php/provide/vod/" },
+            { title: "臥龍資源", value: "https://collect.wolongzy.cc/api.php/provide/vod/" },
+            { title: "無憂資源", value: "https://www.wyvod.com/api.php/provide/vod/" },
+            { title: "如意資源", value: "https://cj.rycjapi.com/api.php/provide/vod/at/json/" },
+            { title: "九零資源", value: "https://oknnews.com/api.php/provide/vod/" },
+            { title: "含羞資源", value: "https://api.souavzy.vip/api.php/provide/vod/" },
+            { title: "玉兔資源", value: "https://apiyutu.com/api.php/provide/vod/" },
+            { title: "豆瓣資源", value: "https://caiji.dbzy.tv/api.php/provide/vod/at/josn/" },
+            { title: "阿里資源", value: "https://alivod.com/api.php/provide/vod/" },
+            { title: "LSP資源", value: "https://apilsbzy1.com/api.php/provide/vod" },
+            { title: "先鋒資源", value: "http://60.204.225.89:1122/api.php/provide/vod/" }
           ],
         },
         {
@@ -133,9 +68,9 @@ var WidgetMetadata = {
         },
         {
           name: "h",
-          title: "最近幾小時內",
+          title: "最近更新時間",
           type: "input",
-          description: "獲取最近幾小時內更新的內容 (例如: 24，可留空)",
+          description: "僅顯示最近N小時內更新的影片 (範例: 24，可留空)",
           value: "",
         },
       ],
@@ -149,89 +84,30 @@ var WidgetMetadata = {
         name: "apiUrl",
         title: "影片源地址",
         type: "input",
-        description:
-          "當前僅支持蘋果CMS的JSON API地址 (例如: https://example.com/api.php/provide/vod/)",
+        description: "請輸入蘋果CMS的JSON API地址 (範例: https://example.com/api.php/provide/vod/)",
         value: "https://api.wwzy.tv/api.php/provide/vod/",
         placeholders: [
-          {
-            title: "扶風資源",
-            value: "http://60.204.225.89:1122/api.php/provide/vod/",
-          },
-          {
-            title: "極速資源",
-            value: "https://jszyapi.com/api.php/provide/vod/",
-          },
-          {
-            title: "蝦米資源",
-            value: "https://zy.hls.one/api.php/provide/vod/",
-          },
-          {
-            title: "魔抓資源",
-            value: "https://mozhuazy.com/api.php/provide/vod/",
-          },
-          {
-            title: "旺旺短劇",
-            value: "https://api.wwzy.tv/api.php/provide/vod/",
-          },
-          {
-            title: "量子資源",
-            value: "https://cj.lziapi.com/api.php/provide/vod/at/json/",
-          },
-          {
-            title: "如意資源",
-            value: "https://cj.rycjapi.com/api.php/provide/vod/at/json/",
-          },
-          {
-            title: "九零資源",
-            value: "https://oknnews.com/api.php/provide/vod/",
-          },
-          {
-            title: "貓咪資源",
-            value: "http://zy.xiaomaomi.cc/api.php/provide/vod/",
-          },
-          {
-            title: "豆瓣資源",
-            value: "https://caiji.dbzy.tv/api.php/provide/vod/at/josn/",
-          },
-          {
-            title: "含羞資源",
-            value: "https://api.souavzy.vip/api.php/provide/vod/",
-          },
-          {
-            title: "阿里資源",
-            value: "https://alivod.com/api.php/provide/vod/",
-          },
-          {
-            title: "臥龍資源",
-            value: "https://collect.wolongzy.cc/api.php/provide/vod/",
-          },
-          {
-            title: "無憂資源",
-            value: "https://www.wyvod.com/api.php/provide/vod/",
-          },
-          {
-            title: "玉兔資源",
-            value: "https://apiyutu.com/api.php/provide/vod/",
-          },
-          {
-            title: "先鋒資源",
-            value: "http://60.204.225.89:1122/api.php/provide/vod/",
-          },
-          {
-            title: "搜诶微",
-            value: "https://api.souavzy.vip/api.php/provide/vod/",
-          },
-          {
-            title: "LSP",
-            value: "https://apilsbzy1.com/api.php/provide/vod",
-          },
+          { title: "扶風資源", value: "http://60.204.225.89:1122/api.php/provide/vod/" },
+          { title: "極速資源", value: "https://jszyapi.com/api.php/provide/vod/" },
+          { title: "蝦米資源", value: "https://zy.hls.one/api.php/provide/vod/" },
+          { title: "魔抓資源", value: "https://mozhuazy.com/api.php/provide/vod/" },
+          { title: "旺旺短劇", value: "https://api.wwzy.tv/api.php/provide/vod/" },
+          { title: "量子資源", value: "https://cj.lziapi.com/api.php/provide/vod/at/json/" },
+          { title: "如意資源", value: "https://cj.rycjapi.com/api.php/provide/vod/at/json/" },
+          { title: "九零資源", value: "https://oknnews.com/api.php/provide/vod/" },
+          { title: "貓咪資源", value: "http://zy.xiaomaomi.cc/api.php/provide/vod/" },
+          { title: "豆瓣資源", value: "https://caiji.dbzy.tv/api.php/provide/vod/at/josn/" },
+          { title: "阿里資源", value: "https://alivod.com/api.php/provide/vod/" },
+          { title: "臥龍資源", value: "https://collect.wolongzy.cc/api.php/provide/vod/" },
+          { title: "玉兔資源", value: "https://apiyutu.com/api.php/provide/vod/" },
+          { title: "LSP資源", value: "https://apilsbzy1.com/api.php/provide/vod" }
         ],
       },
       {
         name: "wd",
         title: "關鍵詞",
         type: "input",
-        description: "搜尋的關鍵詞",
+        description: "請輸入搜尋關鍵詞",
         value: "",
       },
       {
@@ -247,56 +123,80 @@ var WidgetMetadata = {
 // API基礎URL
 var apiBaseUrl = "";
 
+// 簡繁轉換器實例
+var openccConverter = null;
+
 // 初始化OpenCC轉換器
-let converter;
-try {
-    converter = OpenCC.Converter({ from: 'cn', to: 'tw' });
-} catch (e) {
+function initOpenCCConverter() {
+  try {
+    if (typeof OpenCC !== 'undefined') {
+      openccConverter = OpenCC.Converter({ from: 'cn', to: 'tw' });
+      console.log('OpenCC轉換器初始化成功');
+      return true;
+    }
+  } catch (e) {
     console.error('OpenCC初始化失敗:', e);
+  }
+  return false;
 }
 
-/**
- * 文本清理函數
- */
+// 文本清理函數 - 專為繁體中文優化
 function cleanText(text) {
-    if (!text || typeof text !== 'string') return '';
-    
-    // 處理常見亂碼變體
-    const decoded = text
-        .replace(/&amp;?nbsp;?/gi, ' ')  // 處理 &nbsp; &amp;nbsp; &ampinbsp; 等變體
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;|&apos;/g, "'")
-        .replace(/&amp;/g, '&')
-        .replace(/\s{2,}/g, ' ')          // 合併連續空格
-        .trim();
-    
-    return decoded;
+  if (!text || typeof text !== 'string') return '';
+  
+  // 處理常見亂碼變體
+  let cleaned = text
+    .replace(/&amp;?nbsp;?/gi, ' ')  // 處理空格亂碼
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ')          // 合併連續空格
+    .replace(/[　]+/g, ' ')        // 處理全形空格
+    .trim();
+  
+  // 移除常見無意義前綴
+  cleaned = cleaned.replace(/^(簡介|剧情|劇情|片花|花絮)[:：\s]+/i, '');
+  
+  return cleaned;
 }
 
-/**
- * 簡體轉繁體函數
- */
+// 簡體轉繁體函數
 function convertToTraditional(text) {
-    if (!converter) {
-        console.warn('OpenCC不可用，跳過轉換');
-        return text;
-    }
-    try {
-        return converter(text);
-    } catch (e) {
-        console.error('轉換失敗:', e);
-        return text;
-    }
+  if (!openccConverter && !initOpenCCConverter()) {
+    return text;
+  }
+  
+  try {
+    return openccConverter(text);
+  } catch (e) {
+    console.error('簡繁轉換失敗:', e);
+    return text;
+  }
 }
 
-/**
- * 處理文本（清理+轉換）
- */
+// 處理文本（清理+轉換）
 function processText(text) {
-    return convertToTraditional(cleanText(text));
+  return convertToTraditional(cleanText(text));
 }
+
+// 確保在腳本加載時初始化轉換器
+(function init() {
+  if (typeof OpenCC !== 'undefined') {
+    initOpenCCConverter();
+  } else {
+    // 重試機制
+    let retryCount = 0;
+    const maxRetries = 5;
+    const retryInterval = setInterval(() => {
+      retryCount++;
+      if (initOpenCCConverter() || retryCount >= maxRetries) {
+        clearInterval(retryInterval);
+      }
+    }, 300);
+  }
+})();
 
 /**
  * 構建請求URL
@@ -305,160 +205,106 @@ function buildRequestUrl(baseUrl, queryParams = {}) {
   let finalUrl = baseUrl;
   let firstParam = true;
 
+  // 確保URL結尾有斜線
   if (!finalUrl.endsWith("/") && !finalUrl.includes("?")) {
-    const schemeIndex = finalUrl.indexOf("://");
-    const pathPart =
-      schemeIndex !== -1 ? finalUrl.substring(schemeIndex + 3) : finalUrl;
-    if (
-      !pathPart.includes(".") ||
-      pathPart.substring(pathPart.lastIndexOf(".")).length > 5
-    ) {
-      finalUrl += "/";
-    }
+    finalUrl += "/";
   }
 
-  if (finalUrl.includes("?")) {
-    firstParam = false;
-  }
-
+  // 添加查詢參數
   for (const key in queryParams) {
     if (queryParams.hasOwnProperty(key)) {
       const value = queryParams[key];
-      if (
-        value !== undefined &&
-        value !== null &&
-        String(value).trim() !== ""
-      ) {
-        if (firstParam) {
-          finalUrl += "?";
-          firstParam = false;
-        } else {
-          finalUrl += "&";
-        }
-        finalUrl += `${encodeURIComponent(key)}=${encodeURIComponent(
-          String(value)
-        )}`;
+      if (value !== undefined && value !== null && String(value).trim() !== "") {
+        finalUrl += firstParam ? "?" : "&";
+        finalUrl += `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`;
+        firstParam = false;
       }
     }
   }
+  
   return finalUrl;
 }
 
 /**
- * 從 vod_play_url 中解析劇集和播放連結 (供 loadDetail 使用)
- * @param {string} vodPlayUrl
- * @param {string} mainTitle - 影片主標題，用於生成劇集標題
- * @returns {{bestVideoUrl: string|null, episodeItems: Array<object>}}
+ * 從 vod_play_url 解析劇集和播放連結
  */
 function parsePlayUrlData(vodPlayUrl, mainTitle = "播放") {
   const episodeItems = [];
   let bestVideoUrl = null;
 
   if (!vodPlayUrl || typeof vodPlayUrl !== "string") {
-    console.warn(
-      `parsePlayUrlData: vod_play_url 無效。收到:`,
-      vodPlayUrl
-    );
     return { bestVideoUrl, episodeItems };
   }
 
-  const playSources = vodPlayUrl.split("$$$");
+  // 處理常見格式問題
+  const normalizedUrl = vodPlayUrl
+    .replace(/\$\$\$/g, '#')
+    .replace(/#+/g, '#')
+    .replace(/\$+/g, '$');
 
-  const m3u8Sources = playSources.filter((s) =>
-    s.toLowerCase().includes(".m3u8")
-  );
-  const otherSources = playSources.filter(
-    (s) => !s.toLowerCase().includes(".m3u8")
-  );
-  const sortedSources = [...m3u8Sources, ...otherSources];
-
-  for (const sourceString of sortedSources) {
-    if (!sourceString || typeof sourceString !== "string") continue;
-
-    if (
-      sourceString.toLowerCase().startsWith("http") &&
-      !sourceString.includes("#") &&
-      !sourceString.includes("$")
-    ) {
-      const directUrl = sourceString.trim();
-      if (
-        !bestVideoUrl ||
-        (directUrl.toLowerCase().includes(".m3u8") &&
-          (!bestVideoUrl || !bestVideoUrl.toLowerCase().includes(".m3u8")))
-      ) {
-        bestVideoUrl = directUrl;
-      }
-      episodeItems.push({
-        id: (episodeItems.length + 1).toString(), // 自增ID
-        type: "url",
-        title: processText(mainTitle), // 處理主標題
-        videoUrl: directUrl,
-        mediaType: "tv",
-      });
-      if (
-        bestVideoUrl &&
-        bestVideoUrl.toLowerCase().includes(".m3u8") &&
-        episodeItems.length > 0
-      ) {
-        break;
+  // 分割不同來源
+  const playSources = normalizedUrl.split('#');
+  
+  for (const sourceString of playSources) {
+    if (!sourceString) continue;
+    
+    // 直接URL格式
+    if (sourceString.startsWith("http")) {
+      const urlMatch = sourceString.match(/https?:\/\/[^\s$]+/);
+      if (urlMatch) {
+        const videoUrl = urlMatch[0];
+        if (!bestVideoUrl || (videoUrl.includes(".m3u8") && !bestVideoUrl.includes(".m3u8"))) {
+          bestVideoUrl = videoUrl;
+        }
+        episodeItems.push({
+          id: (episodeItems.length + 1).toString(),
+          type: "url",
+          title: processText(mainTitle),
+          videoUrl: videoUrl,
+          mediaType: "tv",
+        });
       }
       continue;
     }
 
+    // 標準格式: 名稱$URL
     if (sourceString.includes("$")) {
-      const episodes = sourceString.split("#");
-      for (const episodeString of episodes) {
-        if (!episodeString || typeof episodeString !== "string") continue;
-
-        const parts = episodeString.split("$");
-        let episodeName = "";
-        let potentialUrl = "";
-
-        if (parts.length >= 2) {
-          // 清理並轉換劇集名稱
-          episodeName = processText(parts[0].trim()) || processText(`第 ${episodeItems.length + 1} 集`);
-          potentialUrl = parts[1].trim();
-        } else if (
-          parts.length === 1 &&
-          parts[0].trim().toLowerCase().startsWith("http")
-        ) {
-          potentialUrl = parts[0].trim();
-          episodeName = processText(`播放 ${episodeItems.length + 1}`);
+      const parts = sourceString.split('$');
+      if (parts.length >= 2 && parts[1].startsWith("http")) {
+        const episodeName = parts[0].trim() || `第${episodeItems.length + 1}集`;
+        const videoUrl = parts[1].trim();
+        
+        if (!bestVideoUrl || (videoUrl.includes(".m3u8") && !bestVideoUrl.includes(".m3u8"))) {
+          bestVideoUrl = videoUrl;
         }
-
-        if (potentialUrl && potentialUrl.toLowerCase().startsWith("http")) {
-          if (
-            !bestVideoUrl ||
-            (potentialUrl.toLowerCase().includes(".m3u8") &&
-              (!bestVideoUrl || !bestVideoUrl.toLowerCase().includes(".m3u8")))
-          ) {
-            bestVideoUrl = potentialUrl;
-          }
-          episodeItems.push({
-            id: (episodeItems.length + 1).toString(),
-            type: "url",
-            title: episodeName,
-            videoUrl: potentialUrl,
-            mediaType: "episode",
-          });
-        }
-      }
-      if (
-        episodeItems.length > 0 &&
-        bestVideoUrl &&
-        bestVideoUrl.toLowerCase().includes(".m3u8")
-      ) {
-        break;
+        
+        episodeItems.push({
+          id: (episodeItems.length + 1).toString(),
+          type: "url",
+          title: processText(episodeName),
+          videoUrl: videoUrl,
+          mediaType: "episode",
+        });
       }
     }
   }
+  
+  // 確保至少有一個播放連結
+  if (episodeItems.length === 0 && bestVideoUrl) {
+    episodeItems.push({
+      id: "1",
+      type: "url",
+      title: processText(mainTitle),
+      videoUrl: bestVideoUrl,
+      mediaType: "tv",
+    });
+  }
+  
   return { bestVideoUrl, episodeItems };
 }
 
 /**
- * 解析接口影片數據
- * @param {object} apiVideoData - 從API獲取的單個影片對象
- * @returns {object} Forward VideoItem格式的對象
+ * 解析API影片數據
  */
 function parseItemFromListApi(apiVideoData) {
   const numericalVodId = String(apiVideoData.vod_id);
@@ -467,25 +313,13 @@ function parseItemFromListApi(apiVideoData) {
     ids: numericalVodId,
   });
 
+  // 智能判斷媒體類型
   let mediaType = "movie";
-  if (apiVideoData.type_name) {
-    const typeName = String(apiVideoData.type_name).toLowerCase();
-    if (
-      typeName.includes("剧") ||
-      typeName.includes("电视") ||
-      typeName.includes("连续") ||
-      typeName.includes("系列") ||
-      typeName.includes("动漫")
-    ) {
-      mediaType = "tv";
-    }
-  }
-
-  if (
-    apiVideoData.vod_remarks &&
-    String(apiVideoData.vod_remarks).match(/第(\d+|全)集/) &&
-    mediaType === "movie"
-  ) {
+  const typeName = apiVideoData.type_name ? String(apiVideoData.type_name).toLowerCase() : "";
+  const remarks = apiVideoData.vod_remarks ? String(apiVideoData.vod_remarks) : "";
+  
+  if (typeName.includes("剧") || typeName.includes("电视") || typeName.includes("连续") || 
+      typeName.includes("系列") || typeName.includes("动漫") || remarks.match(/第(\d+|全)集/)) {
     mediaType = "tv";
   }
 
@@ -497,11 +331,12 @@ function parseItemFromListApi(apiVideoData) {
     backdropPath: apiVideoData.vod_pic_slide || apiVideoData.vod_pic,
     releaseDate: apiVideoData.vod_time,
     mediaType: mediaType,
-    genreTitle: processText(apiVideoData.type_name),
+    genreTitle: processText(apiVideoData.type_name || ""),
     description: processText(
-      apiVideoData.vod_blurb ||
-      apiVideoData.vod_remarks ||
-      apiVideoData.vod_content
+      apiVideoData.vod_blurb || 
+      apiVideoData.vod_remarks || 
+      apiVideoData.vod_content || 
+      "暫無簡介"
     ),
     link: detailPageApiUrl,
   };
@@ -513,9 +348,13 @@ function parseItemFromListApi(apiVideoData) {
 async function getVodList(params = {}) {
   const apiUrl = params.apiUrl;
   if (!apiUrl || String(apiUrl).trim() === "") {
-    throw new Error("API源地址 (apiUrl) 不能為空");
+    throw new Error("請提供有效的API源地址");
   }
+  
   apiBaseUrl = apiUrl.trim();
+  if (!apiBaseUrl.endsWith('/')) {
+    apiBaseUrl += '/';
+  }
 
   const queryParams = {
     ac: "videolist",
@@ -525,50 +364,25 @@ async function getVodList(params = {}) {
   };
 
   const requestUrl = buildRequestUrl(apiBaseUrl, queryParams);
-  console.log(`getVodList: 請求VOD列表API: ${requestUrl}`);
 
   try {
     const response = await Widget.http.get(requestUrl);
     const data = response.data;
 
-    if (!data) {
-      console.error(
-        "getVodList: API請求失敗，未收到任何數據。URL:",
-        requestUrl
-      );
-      throw new Error("API請求失敗: 未收到任何數據。");
-    }
-    if (data.code !== 1) {
-      const errorMsg = data.msg || "未知API錯誤";
-      console.error(
-        "getVodList: API請求返回錯誤:",
-        errorMsg,
-        "響應代碼:",
-        data.code
-      );
-      throw new Error(`API請求失敗: ${errorMsg} (code: ${data.code})`);
+    if (!data || data.code !== 1 || !Array.isArray(data.list)) {
+      const errorMsg = data ? (data.msg || "未知API錯誤") : "未收到有效數據";
+      throw new Error(`API請求失敗: ${errorMsg}`);
     }
 
-    if (data.list && Array.isArray(data.list)) {
-      const resultList = data.list.map((apiItem) =>
-        parseItemFromListApi(apiItem)
-      );
-      console.log(`getVodList: 成功解析 ${resultList.length} 個影片項目。`);
-      return resultList;
-    } else {
-      console.warn(
-        "getVodList: API返回的影片列表 'list' 為空或格式不正確。",
-        data
-      );
-      return [];
-    }
+    // 轉換並過濾無效項目
+    const resultList = data.list
+      .filter(item => item.vod_id && item.vod_name)
+      .map(parseItemFromListApi);
+    
+    return resultList;
   } catch (error) {
-    console.error(
-      `getVodList: 獲取影片列表時發生錯誤 (${requestUrl}):`,
-      error.message,
-      error.stack
-    );
-    throw new Error(`獲取影片列表失敗: ${error.message}.`);
+    console.error(`獲取影片列表失敗 (${requestUrl}):`, error);
+    throw new Error(`獲取影片列表失敗: ${error.message}`);
   }
 }
 
@@ -578,11 +392,18 @@ async function getVodList(params = {}) {
 async function searchVod(params = {}) {
   const apiUrl = params.apiUrl;
   if (!apiUrl || String(apiUrl).trim() === "") {
-    throw new Error("API源地址 (apiUrl) 不能為空");
+    throw new Error("請提供有效的API源地址");
   }
+  
   apiBaseUrl = apiUrl.trim();
+  if (!apiBaseUrl.endsWith('/')) {
+    apiBaseUrl += '/';
+  }
 
   const keyword = params.wd;
+  if (!keyword || keyword.trim() === "") {
+    throw new Error("請輸入搜尋關鍵詞");
+  }
 
   const queryParams = {
     ac: "videolist",
@@ -591,177 +412,105 @@ async function searchVod(params = {}) {
   };
 
   const requestUrl = buildRequestUrl(apiBaseUrl, queryParams);
-  console.log(`searchVod: 請求VOD搜尋API: ${requestUrl}`);
 
   try {
     const response = await Widget.http.get(requestUrl);
     const data = response.data;
 
-    if (!data) {
-      console.error("searchVod: API搜尋失敗，未收到任何數據。URL:", requestUrl);
-      throw new Error("API搜尋失敗: 未收到任何數據。");
-    }
-    if (data.code !== 1) {
-      const errorMsg = data.msg || "未知API錯誤";
-      console.error(
-        "searchVod: API搜尋返回錯誤:",
-        errorMsg,
-        "響應代碼:",
-        data.code
-      );
-      throw new Error(`API搜尋失敗: ${errorMsg} (code: ${data.code})`);
+    if (!data || data.code !== 1 || !Array.isArray(data.list)) {
+      const errorMsg = data ? (data.msg || "未知API錯誤") : "未收到有效數據";
+      throw new Error(`搜尋失敗: ${errorMsg}`);
     }
 
-    if (data.list && Array.isArray(data.list)) {
-      const resultList = data.list.map((apiItem) =>
-        parseItemFromListApi(apiItem)
-      );
-      console.log(`searchVod: 成功解析 ${resultList.length} 個搜尋結果。`);
-      return resultList;
-    } else {
-      console.warn(
-        "searchVod: API搜尋返回的影片列表 'list' 為空或格式不正確。",
-        data
-      );
-      return [];
-    }
+    // 轉換並過濾無效項目
+    const resultList = data.list
+      .filter(item => item.vod_id && item.vod_name)
+      .map(parseItemFromListApi);
+    
+    return resultList;
   } catch (error) {
-    console.error(
-      `searchVod: 搜尋影片時發生錯誤 (${requestUrl}):`,
-      error.message,
-      error.stack
-    );
-    throw new Error(`搜尋影片失敗: ${error.message}.`);
+    console.error(`影片搜尋失敗 (${requestUrl}):`, error);
+    throw new Error(`影片搜尋失敗: ${error.message}`);
   }
 }
 
 /**
- * 加載詳細資訊
+ * 加載影片詳情
  */
 async function loadDetail(detailPageApiUrl) {
   if (!detailPageApiUrl || typeof detailPageApiUrl !== "string") {
-    console.error(
-      "loadDetail: 無效的 detailPageApiUrl 參數:",
-      detailPageApiUrl
-    );
-    throw new Error("無效的參數：detailPageApiUrl 不能為空。");
+    throw new Error("無效的影片詳情URL");
   }
 
-  let numericalVodId = "";
-  try {
-    const idsMatch = detailPageApiUrl.match(/[?&]ids=(\d+)/);
-    if (idsMatch && idsMatch[1]) {
-      numericalVodId = idsMatch[1];
-    } else {
-      console.error(
-        "loadDetail: 無法從 detailPageApiUrl 中提取 'ids' 參數:",
-        detailPageApiUrl
-      );
-      throw new Error("無法解析影片ID從詳情URL。");
-    }
-  } catch (e) {
-    console.error(
-      "loadDetail: 解析 detailPageApiUrl 時出錯:",
-      detailPageApiUrl,
-      e
-    );
-    throw new Error("詳情URL格式無效。");
+  // 從URL提取影片ID
+  const idMatch = detailPageApiUrl.match(/[?&]ids=(\d+)/);
+  if (!idMatch || !idMatch[1]) {
+    throw new Error("無法從URL解析影片ID");
   }
-
-  console.log(`loadDetail: 請求VOD詳情API: ${detailPageApiUrl}`);
+  const numericalVodId = idMatch[1];
 
   try {
     const response = await Widget.http.get(detailPageApiUrl);
     const data = response.data;
 
-    if (
-      !data ||
-      data.code !== 1 ||
-      !Array.isArray(data.list) ||
-      data.list.length === 0
-    ) {
-      const errorMsg = data ? data.msg || "未知API錯誤" : "未收到任何數據";
-      console.error(
-        "loadDetail: 詳情API請求失敗或返回數據無效:",
-        errorMsg,
-        "響應代碼:",
-        data ? data.code : "N/A"
-      );
-      throw new Error(`詳情API請求失敗: ${errorMsg}`);
+    if (!data || data.code !== 1 || !Array.isArray(data.list) || data.list.length === 0) {
+      const errorMsg = data ? (data.msg || "未知錯誤") : "未收到有效數據";
+      throw new Error(`詳情請求失敗: ${errorMsg}`);
     }
 
     const videoInfo = data.list[0];
-    const mainTitle = processText(videoInfo.vod_name || "播放");
-    const parsedPlayData = parsePlayUrlData(
-      videoInfo.vod_play_url,
-      mainTitle
+    
+    // 處理所有文本內容
+    const processedTitle = processText(videoInfo.vod_name || "未知標題");
+    const processedDescription = processText(
+      videoInfo.vod_blurb || 
+      videoInfo.vod_remarks || 
+      videoInfo.vod_content || 
+      "暫無簡介"
     );
-    const parsedEpisodeCount = parsedPlayData.episodeItems.length;
+    const processedGenre = processText(videoInfo.type_name || "");
 
-    let returnObject = {
+    // 解析播放連結
+    const parsedPlayData = parsePlayUrlData(videoInfo.vod_play_url, processedTitle);
+    
+    // 構建返回對象
+    const result = {
       id: detailPageApiUrl,
       type: "url",
-      title: mainTitle,
-      description: processText(
-        videoInfo.vod_blurb ||
-        videoInfo.vod_remarks ||
-        videoInfo.vod_content ||
-        ""
-      ),
+      title: processedTitle,
+      description: processedDescription,
       posterPath: videoInfo.vod_pic,
       backdropPath: videoInfo.vod_pic_slide || videoInfo.vod_pic,
       releaseDate: videoInfo.vod_time,
-      genreTitle: processText(videoInfo.type_name),
+      genreTitle: processedGenre,
       videoUrl: parsedPlayData.bestVideoUrl,
       link: detailPageApiUrl,
+      mediaType: "movie",
     };
 
-    // 解析集數
-    if (parsedEpisodeCount > 1) {
-      returnObject.mediaType = "tv";
-      returnObject.episodeItems = parsedPlayData.episodeItems;
-
-      let totalEpisodes = parsedEpisodeCount;
+    // 處理劇集信息
+    if (parsedPlayData.episodeItems.length > 1) {
+      result.mediaType = "tv";
+      result.episodeItems = parsedPlayData.episodeItems;
+      
+      // 自動檢測總集數
       if (videoInfo.vod_remarks) {
         const remarks = String(videoInfo.vod_remarks);
         const match = remarks.match(/(?:全|至|更新至|第)\s*(\d+)\s*集/);
         if (match && match[1]) {
-          totalEpisodes = parseInt(match[1], 10);
+          result.episode = parseInt(match[1], 10);
         }
       }
-      returnObject.episode = totalEpisodes;
-    } else {
-      // 單集或電影
-      let finalMediaType = "movie";
-      if (videoInfo.type_name) {
-        const typeName = String(videoInfo.type_name).toLowerCase();
-        if (
-          typeName.includes("剧") ||
-          typeName.includes("电视") ||
-          typeName.includes("动漫") ||
-          typeName.includes("连续") ||
-          typeName.includes("系列")
-        ) {
-          finalMediaType = "tv";
-        }
-      }
-      if (
-        videoInfo.vod_remarks &&
-        String(videoInfo.vod_remarks).includes("集")
-      ) {
-        finalMediaType = "tv";
-      }
-      returnObject.mediaType = finalMediaType;
+    } else if (
+      videoInfo.type_name && 
+      String(videoInfo.type_name).toLowerCase().includes("剧")
+    ) {
+      result.mediaType = "tv";
     }
 
-    console.log("loadDetail returning object:", returnObject);
-    return returnObject;
+    return result;
   } catch (error) {
-    console.error(
-      `loadDetail: 加載影片詳情時發生錯誤 (ID: ${numericalVodId}, URL: ${detailPageApiUrl}):`,
-      error.message,
-      error.stack
-    );
-    throw new Error(`加載影片詳情失敗: ${error.message}.`);
+    console.error(`加載影片詳情失敗 (ID: ${numericalVodId}):`, error);
+    throw new Error(`加載影片詳情失敗: ${error.message}`);
   }
 }
