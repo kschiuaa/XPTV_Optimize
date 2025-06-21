@@ -1,21 +1,9 @@
-// ==UserScript==
-// @name         VOD影片數據助手 (繁體中文優化版)
-// @namespace    http://tampermonkey.net/
-// @version      1.4
-// @description  獲取VOD影視數據並優化繁體中文顯示
-// @author       Ti
-// @match        *://*/*
-// @grant        none
-// @require      https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.min.js
-// @run-at       document-start
-// ==/UserScript==
-
 var WidgetMetadata = {
   id: "ti.bemarkt.vod.maccms",
   title: "VOD影視助手",
   description: "獲取VOD影視數據並優化繁體中文顯示",
   author: "Ethan",
-  site: "https://github.com/bemarkt/scripts/tree/master/provider/Forward",
+  site: "https://raw.githubusercontent.com/kschiuaa/XPTV_Optimize/refs/heads/main/vod.js",
   version: "1.0.0",
   requiredVersion: "0.0.1",
   modules: [
